@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://blog.nmrs.fi"
 defaultContentLanguage = "en"
 languageCode = "en"
 title = "Portfolio"
