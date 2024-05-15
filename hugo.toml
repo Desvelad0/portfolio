@@ -1,0 +1,21 @@
+baseURL = "http://example.org/"
+defaultContentLanguage = "en"
+languageCode = "en"
+title = "Portfolio"
+theme = "PaperMod"
+tag = "tags"
+
+[menu]
+    [[menu.main]]
+    identifier = "projects"
+    url = "/projects"
+    pre = "🚧"
+    post = ""
+    name = "Projects"
+    weight = 1
+
+    [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+    weight = 2

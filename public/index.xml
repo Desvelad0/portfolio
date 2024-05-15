@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Portfolio</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Portfolio</description>
+    <generator>Hugo -- 0.126.1</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 May 2024 23:33:00 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wazuh</title>
+      <link>http://localhost:1313/projects/wazuh/</link>
+      <pubDate>Fri, 10 May 2024 23:33:00 +0300</pubDate>
+      <guid>http://localhost:1313/projects/wazuh/</guid>
+      <description>Wazuh is a really cool free, open source tool that unifies XDR and SIEM capabilities into one neat package. It has features such as vulnerability detection, file integrity monitoring and log data analysis, threat hunting, posture management and a bunch more. I have previously used Wazuh in a professional capacity, and have been meaning to install it into my own environment, which is what this post is about. I will be following the version 4.</description>
+    </item>
+  </channel>
+</rss>
