@@ -294,8 +294,9 @@ Finally, you may also directly see each agent's compliance with any of the liste
 In this post I have successfully installed and configured Wazuh index, server and dashboard. I thought installing the server and the dashboard to the same host could cause some problems, but I haven't had any issues with my first five agents. Initially I was going to do even more things than covered here, but for this to be more digestible, I thought it best to wrap it up here and continue in more posts later with things such as:
 
 - Adding pfSense to Wazuh
+- Making separate groups for servers and workstations
 - Enabling VirusTotal integration
 - Looking into configuring active response
-- Coming up with a better way to set my manager's IP
+- Coming up with a better way to set my manager's IP for agents (FQDN perhaps?)
 
 For now, thank you for reading my post! 
