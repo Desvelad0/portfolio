@@ -1,7 +1,7 @@
 ---
 title: "Installing and configuring Wazuh"
 tags: [homelab,wazuh]
-date: 2024-05-10T23:33:00+03:00
+date: 2024-05-16T23:33:00+03:00
 draft: false
 ---
 
