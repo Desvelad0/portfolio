@@ -1,5 +1,6 @@
 ---
 title: "Finding and fixing vulnerabilities with Wazuh"
+tags: [homelab,wazuh]
 date: 2024-05-21T16:33:27+03:00
 draft: false
 ---
