@@ -4,23 +4,23 @@
     <title>Homelab on Portfolio</title>
     <link>http://localhost:1313/tags/homelab/</link>
     <description>Recent content in Homelab on Portfolio</description>
-    <generator>Hugo -- 0.126.1</generator>
+    <generator>Hugo -- 0.125.4</generator>
     <language>en</language>
     <lastBuildDate>Tue, 21 May 2024 16:33:27 +0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Finding and fixing vulnerabilities with Wazuh</title>
-      <link>http://localhost:1313/projects/wazuh_inuse/</link>
+      <link>http://localhost:1313/posts/wazuh_inuse/</link>
       <pubDate>Tue, 21 May 2024 16:33:27 +0300</pubDate>
-      <guid>http://localhost:1313/projects/wazuh_inuse/</guid>
+      <guid>http://localhost:1313/posts/wazuh_inuse/</guid>
       <description>Since the last post got a bit long, I thought I would make this one just to show how Wazuh works in practise, hopefully in a more digestible manner.
 Drilling into vulnerabilities of an agent I have slowly been rolling out Wazuh to my servers, starting with an important Ubuntu Server, which is my only Linux server that has a GUI for website access locally on the machine. As it is a still essentially a server, despite it having a desktop installation, there are many things that come pre-installed that I don&amp;rsquo;t personally need, such as bluetooth drivers.</description>
     </item>
     <item>
       <title>Installing and configuring Wazuh</title>
-      <link>http://localhost:1313/projects/wazuh_install/</link>
+      <link>http://localhost:1313/posts/wazuh_install/</link>
       <pubDate>Thu, 16 May 2024 23:33:00 +0300</pubDate>
-      <guid>http://localhost:1313/projects/wazuh_install/</guid>
+      <guid>http://localhost:1313/posts/wazuh_install/</guid>
       <description>Wazuh is a really cool free, open source tool that unifies XDR and SIEM capabilities into one neat package. It has features such as vulnerability detection, file integrity monitoring and log data analysis, threat hunting, posture management and a bunch more. I have previously used Wazuh in a professional capacity, and have been meaning to install it into my own environment, which is what this post is about. I will be following the version 4.</description>
     </item>
   </channel>

@@ -7,15 +7,21 @@ tag = "tags"
 
 [menu]
     [[menu.main]]
-    identifier = "projects"
-    url = "/projects"
-    pre = "🚧"
-    post = ""
-    name = "Projects"
+    identifier = "About me"
+    name = "About me"
+    url = "/about"
     weight = 1
+
+    [[menu.main]]
+    identifier = "Posts"
+    url = "/posts"
+    pre = ""
+    post = ""
+    name = "Posts"
+    weight = 2
 
     [[menu.main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags"
-    weight = 2
+    weight = 3
