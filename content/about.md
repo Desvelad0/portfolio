@@ -12,7 +12,7 @@ I’m a system administrator working on transitioning into information security.
 
 My career has been on an uptrend in terms of development, starting all the way from regular IT support related duties and now having several years of experience from system administration, ranging from hypervisor administration experience to hunting for vulnerabilities in a company's network, planning and executing SOC work and much more. 
 
-
+Right now I am looking for roles in red teaming, offensive security, incident response or cloud security. 
 
 📝 **Certifications**
 
