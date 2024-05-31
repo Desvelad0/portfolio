@@ -8,8 +8,9 @@ tag = "tags"
 [menu]
     [[menu.main]]
     identifier = "About me"
-    name = "About me"
     url = "/about"
+    pre = ""
+    post = "👨‍💻"
     weight = 1
 
     [[menu.main]]
