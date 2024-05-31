@@ -17,4 +17,4 @@ Right now I am looking for roles in red teaming, offensive security, incident re
 📝 **Certifications**
 
 - Microsoft Certified: Security, Compliance, and Identity Fundamentals (MS-900)
-- SC-300, SC-200, AZ-104 planned
+- SC-300, SC-200, AZ-104 planned (Courses done for all three certifications)
