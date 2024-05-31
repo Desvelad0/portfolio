@@ -11,6 +11,7 @@ tag = "tags"
     url = "/about"
     pre = ""
     post = "👨‍💻"
+    name = "About me"
     weight = 1
 
     [[menu.main]]
