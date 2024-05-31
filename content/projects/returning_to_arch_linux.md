@@ -111,7 +111,7 @@ Finally before rebooting into the installation, I have to set a hostname by just
 
 Now I can exit the arch-chroot, unmount everything with `umount -R /mnt` and reboot into the OS.
 
-Thats it! Last time I remember this using under a gig of RAM, oh how bloated Arch has become! 
+Thats it! Last time I remember this only using under a gig of RAM...
 
 ![IMG_0403.JPEG](/arch_linux/IMG_0403.JPEG)
 
