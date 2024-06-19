@@ -4,7 +4,7 @@ date: 2024-06-19T14:44:09+03:00
 draft: true
 ---
 
-A while ago I installed Arch Linux, but haven't had time since to continue with it afterwards, until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland.
+A while ago I installed Arch Linux, but haven't had time since to continue with it afterwards, until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland. 
 
 ## **Nvidia required steps** 
 
@@ -28,7 +28,7 @@ I then need to add similar things to `/etc/mkinitcpio.conf`:
 
 The guide also mentions to export certain variables to the hyprland config, and at this stage I have not even installed hyprland itself yet, so I'll do just that now.
 
-## ** Installing Hyprland** 
+## Installing Hyprland 
 
 Apparently you can automatically compile the latest hyprland package from source if installing from the AUR, Arch User repository, so I'll install `Aura`, another package manager for Arch Linux which can detect fishy behaviour in packages downloaded from AUR, and notify you if something seems suspicious:
 
@@ -43,6 +43,8 @@ And then the next command which proved troublesome on my newly created account; 
 `sudo pacman -U aura-bin-3.2.9-1-x86_64.pkg.tar.zst`, the .pkg.tar.zst file having been created by the `makepkg` command. 
 
 Next I can run `sudo aura -A hyprland-git`; the `-A` switch will list all the dependencies required to install that package and ask me to confirm. All looks good for me, so I'll go ahead and say `Y` , and `Y` once more to install all the packages. 
+
+## **Installation problems** 
 
 The install here actually failed, the error being `ERROR: A failure occured in build().` Aura asks if I'd like to continue anyway but I decide not to. I go on to try the manual build method, where a slew of packages are listed. I tried to install them with Aura, and was met with "no valid packages specified", so I decide to use yay as suggested by the Hyprland wiki:
 
@@ -67,3 +69,31 @@ make all && sudo make install
 That one throws an error about missing a required package `hyprutils`. I download it with `sudo pacman -S hyprutils` and try again. Still the same problem, seems pacman got `hyprutils-0.1.3-1` and the one required is `hyprutils-0.1.4` or newer. `yay hyprutils` seems to also return older versions than requested by the installation script. 
 
 I decide to look at the issues of the package to see if anyone else has the same issue, and find [this](https://github.com/hyprwm/Hyprland/issues/6596) issue for NixOS, but no issue has been made for Arch Linux. I make a comment in this issue and boot back to Windows while waiting. 
+
+After waiting a while, I decided to open a new issue of my own, to which I promptly got a one word response; hyprutils-git. I assumed installing this would not work due to it being older than what the error specifies, but sure enough, it works. Nice! I also installed `kitty` which is the recommended terminal to be used with Hyprland. I also exported variables to the hyprland.conf mentioned on the Hyprland wiki:
+
+```
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+
+cursor {
+    no_hardware_cursors = true
+}
+```
+
+After doing all this, simply running `Hyprland` should start Hyprland. I did however have issues doing this, and kept getting the following error:
+
+```
+Hyprland threw in ctor: filesystem error: status: Permission denied [/run/user/0/hypr]
+
+Cannot continue.
+```
+
+I believe the issue had to do with polkit and seatd not having been started; these are services used by Hyprland. After I enabled both services with systemctl, re-did the mkinitcpio and grub steps and rebooted, running `Hyprland` finally started working. By default you are automatically made an example hyprland.conf (which was where I added those environment variables above) file in `~/.config/hypr/hyprland.conf`, and by default this file includes keybindings to start things like `kitty`, and the default shortcut for that is the so-called SUPERKEY, so usually Windows key in a Windows keyboard + Q. Initially it would not launch, so I googled and found [this Reddit thread](https://www.reddit.com/r/hyprland/comments/zrw9zq/kitty_not_launching/) which mentions that simply installing gtk3 should be enough, and it certainly was. Another user mentioned that adding `KITTY_DISABLE_WAYLAND=0` to `/etc/environment` would also fix the issue but oh well, this one already works for me. I am now able to open a terminal window or ten, and I also changed the keyboard layout to FI in the config file, which immediately changed it to the Finnish layout; changes like this immediately take effect. Very cool.
+
+
+
+
+
