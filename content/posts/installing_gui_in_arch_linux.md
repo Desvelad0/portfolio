@@ -1,7 +1,7 @@
 ---
-title: "Installing_gui_in_arch_linux"
+title: "Installing GUI on Arch Linux"
 date: 2024-08-01T14:44:09+03:00
-draft: true
+draft: false
 ---
 
 A while ago I installed Arch Linux, but have since been pre-occupied with other tasks and a vacation to the Canary Islands (highly recommend Tenerife with a rented car!) so I didn't have a chance to post this until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland. 
@@ -18,11 +18,11 @@ Next, I'll need to install the necessary nvidia packages. I believe last time it
 
 Now I'll need to "enable modeset for nvidia", which is done by editing the kernel parameters of the respective bootloader, and for me that is grub, so I'll add `nvidia_drm.modeset=1` to the very end of `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`, and from a quick google search it seems multiple parameters are separated by spaces, so after the word "quiet" I have there, I'll add in the parameter, save and then run `# grub-mkconfig -o /boot/grub/grub.cfg` for the changes to take effect in grub. 
 
-![drm_modeset](/arch_linux/IMG_0530.JPEG)
+![drm_modeset](/arch_linux/IMG_0531.JPEG)
 
 I then need to add similar things to `/etc/mkinitcpio.conf`:
 
-(pic)
+![drm_modeset](/arch_linux/IMG_0530.JPEG)
 
 ... And have the changes take effect by running `# mkinitcpio -P`. The guide points out that if there were any errors mentioned about missing nvidia modules, the aforementioned headers package probably wasn't installed, but I followed the guide and did as asked, so I didn't get any such error.
 
@@ -91,7 +91,11 @@ Hyprland threw in ctor: filesystem error: status: Permission denied [/run/user/0
 Cannot continue.
 ```
 
-I believe the issue had to do with polkit and seatd not having been started; these are services used by Hyprland. After I enabled both services with systemctl, re-did the mkinitcpio and grub steps and rebooted, running `Hyprland` finally started working. By default you are automatically made an example hyprland.conf (which was where I added those environment variables above) file in `~/.config/hypr/hyprland.conf`, and by default this file includes keybindings to start things like `kitty`, and the default shortcut for that is the so-called SUPERKEY, so usually Windows key in a Windows keyboard + Q. Initially it would not launch, so I googled and found [this Reddit thread](https://www.reddit.com/r/hyprland/comments/zrw9zq/kitty_not_launching/) which mentions that simply installing gtk3 should be enough, and it certainly was. Another user mentioned that adding `KITTY_DISABLE_WAYLAND=0` to `/etc/environment` would also fix the issue but oh well, this one already works for me. I am now able to open a terminal window or ten, and I also changed the keyboard layout to FI in the config file, which immediately changed it to the Finnish layout; changes like this immediately take effect. Very cool.
+I believe the issue had to do with polkit and seatd not having been started; these are services used by Hyprland. After I enabled both services with systemctl, re-did the mkinitcpio and grub steps and rebooted, running `Hyprland` finally started working. By default you are automatically made an example hyprland.conf (which was where I added those environment variables above) file in `~/.config/hypr/hyprland.conf`, and by default this file includes keybindings to start things like `kitty`, and the default shortcut for that is the so-called SUPERKEY, so usually Windows key in a Windows keyboard + Q. Initially it would not launch, so I googled and found [this Reddit thread](https://www.reddit.com/r/hyprland/comments/zrw9zq/kitty_not_launching/) which mentions that simply installing gtk3 should be enough, and it certainly was. Another user mentioned that adding `KITTY_DISABLE_WAYLAND=0` to `/etc/environment` would also fix the issue but oh well, this one already works for me. I am now able to open a terminal window or ten, and I also changed the keyboard layout to FI in the config file, which immediately changed it to the Finnish layout; changes like this immediately take effect, including ones that can mess up things. Still, I find this very nice, and always make backups of dotfiles if I am not sure about something.
+
+At this stage I have a barebones Hyprland setup on Arch Linux, and the next steps are to configure the relevant dotfiles to reflect how I want my system to run, starting from simple things such as making the play/pause button on my keyboard actually do something to things like taking screenshots. 
+
+I shall keep documenting my experiences regarding this and other technical topics I wish to cover. If you got this far, I highly appreciate you taking the time to read this!
 
 
 
