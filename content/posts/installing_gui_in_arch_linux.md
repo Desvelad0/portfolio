@@ -18,7 +18,7 @@ Next, I'll need to install the necessary nvidia packages. I believe last time it
 
 Now I'll need to "enable modeset for nvidia", which is done by editing the kernel parameters of the respective bootloader, and for me that is grub, so I'll add `nvidia_drm.modeset=1` to the very end of `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`, and from a quick google search it seems multiple parameters are separated by spaces, so after the word "quiet" I have there, I'll add in the parameter, save and then run `# grub-mkconfig -o /boot/grub/grub.cfg` for the changes to take effect in grub. 
 
-(pic of it)
+![drm_modeset](/arch_linux/IMG_0530.JPEG)
 
 I then need to add similar things to `/etc/mkinitcpio.conf`:
 

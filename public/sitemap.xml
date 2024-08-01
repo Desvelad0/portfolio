@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2024-05-31T12:18:51+03:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2024-08-01T14:44:09+03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-08-01T14:44:09+03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2024-05-31T12:18:51+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/arch/</loc>
     <lastmod>2024-05-31T03:33:58+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/linux/</loc>
-    <lastmod>2024-05-31T03:33:58+03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-05-31T03:33:58+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/returning_to_arch_linux/</loc>
