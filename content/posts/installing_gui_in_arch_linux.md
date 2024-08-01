@@ -1,10 +1,10 @@
 ---
 title: "Installing_gui_in_arch_linux"
-date: 2024-06-19T14:44:09+03:00
+date: 2024-08-01T14:44:09+03:00
 draft: true
 ---
 
-A while ago I installed Arch Linux, but haven't had time since to continue with it afterwards, until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland. 
+A while ago I installed Arch Linux, but have since been pre-occupied with other tasks and a vacation to the Canary Islands (highly recommend Tenerife with a rented car!) so I didn't have a chance to post this until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland. 
 
 ## **Nvidia required steps** 
 
