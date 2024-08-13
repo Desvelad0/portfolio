@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Installing_gui_in_arch_linux | Portfolio</title>
+<title>Installing GUI on Arch Linux | Portfolio</title>
 <meta name="keywords" content="">
 <meta name="description" content="A while ago I installed Arch Linux, but have since been pre-occupied with other tasks and a vacation to the Canary Islands (highly recommend Tenerife with a rented car!) so I didn&rsquo;t have a chance to post this until now. As promised, I will now be installing the GUI portion of the OS, and what I like to use for that specifically is called Hyprland.
 Nvidia required steps Now, a problem is that my discrete GPU is an NVIDIA one, and Hyprland isn&rsquo;t even officially supported on NVIDIA cards.">
@@ -105,6 +105,11 @@ Nvidia required steps Now, a problem is that my discrete GPU is an NVIDIA one, a
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/networkdiagram" title="Network diagram">
+                    <span>Network diagram🌐</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/posts" title="Posts">
                     <span>Posts</span>
                 </a>
@@ -123,7 +128,7 @@ Nvidia required steps Now, a problem is that my discrete GPU is an NVIDIA one, a
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Installing_gui_in_arch_linux
+      Installing GUI on Arch Linux
     </h1>
     <div class="post-meta"><span title='2024-08-01 14:44:09 +0300 EEST'>August 1, 2024</span>
 
@@ -136,10 +141,11 @@ Nvidia required steps Now, a problem is that my discrete GPU is an NVIDIA one, a
 <p>After running a <code># pacman -Syu</code> to update the system, first steps are to download the correct headers package for the current kernel. <code>uname -a</code> returns an expected result; when I installed Arch, I specified <code>linux</code> as the kernel, and Linux is the kernel I am running. Thus I&rsquo;ll <code># pacman -S linux-headers</code>.</p>
 <p>Next, I&rsquo;ll need to install the necessary nvidia packages. I believe last time it was <code>nvidia-dkms</code>, so I&rsquo;ll go with that one, and I will also apparently need to get <code>nvidia-utils</code> and also <code>lib32-nvidia-utils</code> in order to be able to play games via Wine and natively as well, however I can&rsquo;t immediately find any package for the latter. I&rsquo;ll get back to it if required. Finally I also need to install <code>egl-wayland</code>.</p>
 <p>Now I&rsquo;ll need to &ldquo;enable modeset for nvidia&rdquo;, which is done by editing the kernel parameters of the respective bootloader, and for me that is grub, so I&rsquo;ll add <code>nvidia_drm.modeset=1</code> to the very end of <code>GRUB_CMDLINE_LINUX_DEFAULT</code> in <code>/etc/default/grub</code>, and from a quick google search it seems multiple parameters are separated by spaces, so after the word &ldquo;quiet&rdquo; I have there, I&rsquo;ll add in the parameter, save and then run <code># grub-mkconfig -o /boot/grub/grub.cfg</code> for the changes to take effect in grub.</p>
-<p><img loading="lazy" src="/arch_linux/IMG_0530.JPEG" alt="drm_modeset"  />
+<p><img loading="lazy" src="/arch_linux/IMG_0531.JPEG" alt="drm_modeset"  />
 </p>
 <p>I then need to add similar things to <code>/etc/mkinitcpio.conf</code>:</p>
-<p>(pic)</p>
+<p><img loading="lazy" src="/arch_linux/IMG_0530.JPEG" alt="drm_modeset"  />
+</p>
 <p>&hellip; And have the changes take effect by running <code># mkinitcpio -P</code>. The guide points out that if there were any errors mentioned about missing nvidia modules, the aforementioned headers package probably wasn&rsquo;t installed, but I followed the guide and did as asked, so I didn&rsquo;t get any such error.</p>
 <p>The guide also mentions to export certain variables to the hyprland config, and at this stage I have not even installed hyprland itself yet, so I&rsquo;ll do just that now.</p>
 <h2 id="installing-hyprland">Installing Hyprland<a hidden class="anchor" aria-hidden="true" href="#installing-hyprland">#</a></h2>
@@ -176,7 +182,10 @@ cursor {
 <pre tabindex="0"><code>Hyprland threw in ctor: filesystem error: status: Permission denied [/run/user/0/hypr]
 
 Cannot continue.
-</code></pre><p>I believe the issue had to do with polkit and seatd not having been started; these are services used by Hyprland. After I enabled both services with systemctl, re-did the mkinitcpio and grub steps and rebooted, running <code>Hyprland</code> finally started working. By default you are automatically made an example hyprland.conf (which was where I added those environment variables above) file in <code>~/.config/hypr/hyprland.conf</code>, and by default this file includes keybindings to start things like <code>kitty</code>, and the default shortcut for that is the so-called SUPERKEY, so usually Windows key in a Windows keyboard + Q. Initially it would not launch, so I googled and found <a href="https://www.reddit.com/r/hyprland/comments/zrw9zq/kitty_not_launching/">this Reddit thread</a> which mentions that simply installing gtk3 should be enough, and it certainly was. Another user mentioned that adding <code>KITTY_DISABLE_WAYLAND=0</code> to <code>/etc/environment</code> would also fix the issue but oh well, this one already works for me. I am now able to open a terminal window or ten, and I also changed the keyboard layout to FI in the config file, which immediately changed it to the Finnish layout; changes like this immediately take effect. Very cool.</p>
+</code></pre><p>I believe the issue had to do with polkit and seatd not having been started; these are services used by Hyprland. After I enabled both services with systemctl, re-did the mkinitcpio and grub steps and rebooted, running <code>Hyprland</code> finally started working. By default you are automatically made an example hyprland.conf (which was where I added those environment variables above) file in <code>~/.config/hypr/hyprland.conf</code>, and by default this file includes keybindings to start things like <code>kitty</code>, and the default shortcut for that is the so-called SUPERKEY, so usually Windows key in a Windows keyboard + Q. Initially it would not launch, so I googled and found <a href="https://www.reddit.com/r/hyprland/comments/zrw9zq/kitty_not_launching/">this Reddit thread</a> which mentions that simply installing gtk3 should be enough, and it certainly was. Another user mentioned that adding <code>KITTY_DISABLE_WAYLAND=0</code> to <code>/etc/environment</code> would also fix the issue but oh well, this one already works for me. I am now able to open a terminal window or ten, and I also changed the keyboard layout to FI in the config file, which immediately changed it to the Finnish layout; changes like this immediately take effect, including ones that can mess up things. Still, I find this very nice, and always make backups of dotfiles if I am not sure about something.</p>
+<h2 id="wrapping-up"><strong>Wrapping up</strong><a hidden class="anchor" aria-hidden="true" href="#wrapping-up">#</a></h2>
+<p>At this stage I have a barebones Hyprland setup on Arch Linux, and the next steps are to configure the relevant dotfiles to reflect how I want my system to run, starting from simple things such as making the play/pause button on my keyboard actually do something to things like taking screenshots.</p>
+<p>I shall keep documenting my experiences regarding this and other technical topics I wish to cover. If you got this far, I highly appreciate you taking the time to read this!</p>
 
 
   </div>
