@@ -16,7 +16,7 @@ tag = "tags"
     
     [[menu.main]]
     identifier = "Network diagram"
-    url = "/networkdiagram"
+    url = "/diagram"
     pre = ""
     post = "🌐"
     name = "Network diagram"
