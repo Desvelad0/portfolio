@@ -13,11 +13,11 @@ tag = "tags"
     post = "👨‍💻"
     name = "About me"
     weight = 1
-	
-	[[menu.main]]
-	identifier = "Network diagram"
-	url = "/networkdiagram"
-	pre = ""
+    
+    [[menu.main]]
+    identifier = "Network diagram"
+    url = "/networkdiagram"
+    pre = ""
     post = "🌐"
     name = "Network diagram"
     weight = 2
