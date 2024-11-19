@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Network upgrade part 1: TrueNAS SCALE | Portfolio</title>
+<meta name="keywords" content="networking, truenas, unifi, esxi">
+<meta name="description" content="There&rsquo;s been many changes in my internal network in the past few months. For several years I&rsquo;ve wanted to build a NAS in order to start self-hosting more and more things and rely less on the &ldquo;cloud&rdquo;, and finally did so. I bought a setup as follows:
+Case: Fractal Design Define 7 (lots of space for HDDs) Motherboard: Asrock Z790 Pro RS/D4 (mostly because of the crazy amount of 8 sata ports, making it so I don&rsquo;t have to buy any SATA expansion cards yet.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/network_upgrade/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4599eadb9eb2ad3d0a8d6827b41a8fda8f2f4af226b63466c09c5fddbc8706b7.css" integrity="sha256-RZnq256yrT0KjWgntBqP2o8vSvImtjRmwJxf3byHBrc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/network_upgrade/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Portfolio (Alt + H)">Portfolio</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/about" title="About me">
+                    <span>About me👨‍💻</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/diagram" title="Network diagram">
+                    <span>Network diagram🌐</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Network upgrade part 1: TrueNAS SCALE
+    </h1>
+    <div class="post-meta"><span title='2024-11-19 20:56:06 +0200 EET'>November 19, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>There&rsquo;s been many changes in my internal network in the past few months. For several years I&rsquo;ve wanted to build a NAS in order to start self-hosting more and more things and rely less on the &ldquo;cloud&rdquo;, and finally did so. I bought a setup as follows:</p>
+<ul>
+<li><strong>Case:</strong> Fractal Design Define 7 (lots of space for HDDs)</li>
+<li><strong>Motherboard:</strong> Asrock Z790 Pro RS/D4 (mostly because of the crazy amount of 8 sata ports, making it so I don&rsquo;t have to buy any SATA expansion cards yet.)</li>
+<li><strong>CPU:</strong> Intel Core i5-13400F (This one I chose mostly due to it having a nice amount of cores/threads for virtualization, 6 performance cores and 4 efficiency-cores)</li>
+<li><strong>RAM:</strong> Kingston FURY Beast DDR4 3200 MHz CL16 32 Gt (I thought 32 GB would be more than enough but turns out that if you want to run any VMs, more is probably good as ZFS enjoys RAM)</li>
+<li><strong>PSU:</strong> Asus Rog Strix 750W Gold Aura Edition 80+ Gold (This is really good due to it being really quiet and power efficient according to Cybenetics test; it&rsquo;s also made by Seasonic which has been a very reputable PSU manufacturer for quite a while)</li>
+<li><strong>HDD:</strong> 6 x 16 TB X18 Exos drives (might as well have enough space to have a big enough buffer for the foreseeable future)</li>
+</ul>
+<p>I installed the latest stable version of TrueNAS SCALE and the installation was very simple; you just have to decide what drive to install the OS to, choose a root password and choose whether or not you want to have a swap partition. I chose to go with SCALE due to it being the newer version of TrueNAS which is built on Linux, whereas the older version, CORE is based on BSD. There&rsquo;s several features such as virtualization which can only be achieved on SCALE, so that, it being updated more frequently and me being more comfortable on Linux, I chose SCALE. Both utilize the OpenZFS file system which will protect my data with features such as self-healing features, incremental snapshots, software-defined raid and even replication to off-site targets. Awesome.</p>
+<p>After installation I checked for the latest updates and then already looked into creating my first pool. I chose to go with a Raid-z2 pool for redundancy purposes (meaning that I can lose two entire drives until data loss occurs) and I&rsquo;m really glad that I did because while writing this, one drive already started failing S.M.A.R.T tests consistently, and during the writing of this I ended up buying a new backup drive already which I truthfully should have just done when I bought the entire setup. Better late than never!</p>
+<p><img loading="lazy" src="/network_upgrade/truenas_webui.png" alt="truenas_webui"  />
+</p>
+<p>Initially I didn&rsquo;t realise that were I to want to encrypt my pool, I would need to do that before making the pool, so I had to actually start over even though I had already transferred several terabytes of data. After transferring my data back to somewhere I would then move it back from, I re-made the entire pool this time with ZFS encryption enabled, and then went onto actually using the NAS, of course after double and triple-checking I have exported the necessary encryption keys off-site in a secure manner. This leaves me with a pool whose data is encrypted at rest, meaning that if someone were to physically steal the drives in the NAS, they could not read the data without the necessary keys. This encryption does not, however, prevent access to the data on a network level if the device is already turned on, since TrueNAS SCALE decrypts the pool at boot by default, meaning that you still have to properly secure your environment around the NAS.</p>
+<p>Despite having never used TrueNAS before, using it is quite straightforward indeed. You can effortlessly create either NFS or SMB shares (or iSCSI targets if your heart so desires) for which you can then manage permissions for, either in a Unix permissions editor or in an Access Control List editor. For NFS shares it&rsquo;s also possible to do more granular permissions handling in the built-in shell of the software either from the web UI or by connecting to TrueNAS over SSH (which is not turned on by default.) For NFS shares it is possible to handle permissions on a group or user level in as granular a way as desired, even down to a single file in a share. In order to do that however, the user ID or group ID has to match an existing user on TrueNAS, so this kind of granular permissions can only really be achieved on Unix systems, and it works great. Windows clients however can utilize SMB shares and Active Directory for more granular permissions.</p>
+<p><img loading="lazy" src="/network_upgrade/unixpermissions.png" alt="unixpermissions"  />
+</p>
+<p>At this stage I have moved most of my data away from traditional cloud providers over to my NAS, and setup a cloud sync task to upload the most important data off site to an encrypted bucket automatically, with the data being encrypted using a built-in remote encryption feature where the user has to supply an encryption password and the encryption salt. With the current amount of data in the remote bucket, this is also way cheaper than having absolutely everything on say OneDrive, and as a privacy and security minded person get to have the peace of mind knowing that my most important data is safe and sound in an encrypted matter where no matter the promises of the provider, they cannot read the data even if they wished to do so, and more importantly an attacker could also not access my data, even if there was a data breach or misconfiguration of some sort on the provider&rsquo;s end. Even the filenames can be encrypted if desired.</p>
+<p>The cloud sync tasks are very straightforward and easy to setup; you can choose the direction of push or pull, transfer mode of sync, copy or move and then choose any path you like to be backed up. It could be something as little as a few specific files or even an entire pool; the sky really is the limit here, as is the price to pay for the off-site backup depending on the chosen provider of which there are 18 to choose from at the time of writing, if going for a provider that is easy to setup natively in TrueNAS. This includes providers such as Dropbox, Google Cloud Storage and Amason S3, or any other provider not listed using SFTP. Additionally, you can setup Rsync tasks to sync over SSH or even replicate to another TrueNAS system. These area all in a Data Protection section of the UI where you can also setup periodic snapshots and S.M.A.R.T. tests.</p>
+<p>If there needs to be restoring of data, it can either be done from an already setup cloud sync task by choosing &ldquo;restore&rdquo;, or in a disaster scenario if the whole installation is destroyed, by making a new cloud sync task, populating the relevant fields in the UI and restoring the data. At this stage I am not sure on which transfer mode you would need to pick for that scenario, and hopefully will never have to find out, but since I have all necessary details safe e.g encryption password + salt + the credentials for my provider, it won&rsquo;t be a problem to figure that out later on if required; I have already tested restoring from an existing task and it really is as simple as pressing a button.</p>
+<p><img loading="lazy" src="/network_upgrade/dataprotection.png" alt="dataprotection"  />
+</p>
+<h2 id="nice-but-what-about-making-this-all-faster"><strong>Nice, but what about making this all faster?</strong><a hidden class="anchor" aria-hidden="true" href="#nice-but-what-about-making-this-all-faster">#</a></h2>
+<p>After setting everything up, I decided that a 1 GbE network is not fast enough, and bought a UniFi switch which has ports for 1 GbE, 2.5 GbE and even two 10 GbE SFP+ ports. Many of my devices already have 2.5 GbE networking built-in, meaning that I get to already enjoy over double the speeds that I had with my old switch. Setting up the switch was not a walk in a park however, at least not in my non-Unifi environment with my virtualized pfSense running on my ESXi, and it was honestly a bit of a headache to get working, compared to the old managed HP switch I had been using until now, and this is something I&rsquo;ll be covering in my next post.</p>
+<p>Overall, setting up TrueNAS SCALE is quite straightforward and is a great way to perhaps take back control over one&rsquo;s data and secure it in the way one sees fit, and in the long run can even be cheaper than only relying on cloud storage. Then again, RAID or even RAID-Z is not a backup, and the data that is stored on a NAS should be also backed up elsewhere if the data is important, and that is exactly what I have done with my setup as well.</p>
+<p>Next up: How to setup a UniFi switch in a non-Unifi environment. For now, thank you for reading my post!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/networking/">Networking</a></li>
+      <li><a href="http://localhost:1313/tags/truenas/">Truenas</a></li>
+      <li><a href="http://localhost:1313/tags/unifi/">Unifi</a></li>
+      <li><a href="http://localhost:1313/tags/esxi/">Esxi</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Portfolio</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Unifi on Portfolio</title>
+    <link>http://localhost:1313/tags/unifi/</link>
+    <description>Recent content in Unifi on Portfolio</description>
+    <generator>Hugo -- 0.125.4</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 19 Nov 2024 20:56:06 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/unifi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network upgrade part 1: TrueNAS SCALE</title>
+      <link>http://localhost:1313/posts/network_upgrade/</link>
+      <pubDate>Tue, 19 Nov 2024 20:56:06 +0200</pubDate>
+      <guid>http://localhost:1313/posts/network_upgrade/</guid>
+      <description>There&amp;rsquo;s been many changes in my internal network in the past few months. For several years I&amp;rsquo;ve wanted to build a NAS in order to start self-hosting more and more things and rely less on the &amp;ldquo;cloud&amp;rdquo;, and finally did so. I bought a setup as follows:
+Case: Fractal Design Define 7 (lots of space for HDDs) Motherboard: Asrock Z790 Pro RS/D4 (mostly because of the crazy amount of 8 sata ports, making it so I don&amp;rsquo;t have to buy any SATA expansion cards yet.</description>
+    </item>
+  </channel>
+</rss>
