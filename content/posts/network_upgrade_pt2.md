@@ -33,7 +33,7 @@ After spending a few days on trying to figure this out and even recruiting a fri
 
 ![salvation](/network_upgrade/salvation.png)
 
-In addition to this, you have to configure the IP settings to reflect the fact that the switch will indeed reside in a management VLAN from UniFi devices > Switch > cog wheel > IP Settings at the time of writing:
+In addition to this, you have to configure the IP settings to reflect the fact that the switch will indeed reside in a management VLAN from UniFi devices > Switch > cog wheel > IP Settings at the time of writing and no, these are not my real settings:
 
 ![ipsettings](/network_upgrade/ipsettings.png)
 
