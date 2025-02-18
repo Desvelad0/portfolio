@@ -6,8 +6,16 @@
     <description>Recent content in Unifi on Portfolio</description>
     <generator>Hugo -- 0.125.4</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Nov 2024 20:56:06 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 12 Feb 2025 14:30:52 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/unifi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network upgrade part 2: Unifi switch in non Unifi environment</title>
+      <link>http://localhost:1313/posts/network_upgrade_pt2/</link>
+      <pubDate>Wed, 12 Feb 2025 14:30:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/network_upgrade_pt2/</guid>
+      <description>A while ago I built a NAS, discovered I want faster than gigabit speeds so I then bought myself a switch which has 1 GbE, 2.5 GbE and even 10 GbE SFP+ ports. Many devices in my home network already support 2.5 GbE speeds, so it was about time I be able to actually utilize that speed as well.
+However, when switching from an old HP switch with VLAN capabilities to a Unifi one, it wasn&amp;rsquo;t very straightforward to have all my VLANS from ESXi accessible on the switch, nor to even setup the switch itself.</description>
+    </item>
     <item>
       <title>Network upgrade part 1: TrueNAS SCALE</title>
       <link>http://localhost:1313/posts/network_upgrade/</link>

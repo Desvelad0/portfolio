@@ -6,8 +6,15 @@
     <description>Recent content in Tags on Portfolio</description>
     <generator>Hugo -- 0.125.4</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 19 Nov 2024 20:56:06 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 18 Feb 2025 21:58:32 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure</title>
+      <link>http://localhost:1313/tags/azure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/azure/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Esxi</title>
       <link>http://localhost:1313/tags/esxi/</link>
@@ -23,17 +30,17 @@
       <description></description>
     </item>
     <item>
-      <title>Truenas</title>
-      <link>http://localhost:1313/tags/truenas/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/truenas/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Unifi</title>
       <link>http://localhost:1313/tags/unifi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/unifi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Truenas</title>
+      <link>http://localhost:1313/tags/truenas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/truenas/</guid>
       <description></description>
     </item>
     <item>
