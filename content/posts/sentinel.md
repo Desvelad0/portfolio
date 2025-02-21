@@ -216,5 +216,5 @@ The only thing left to do manually with this script is to enroll my Windows PC w
 
 As is often the case, I started off with an ambitious goal for my project here, wanting to not only ingest logs from Windows but also pfSense, but as it turns out, the latter is not as simple as I might have thought. In addition to the issues I was having with destroying and re-deploying my infrastructure, I thought it best to wrap up here with a proof of concept and continue later on with more additions; I will definitely be making more rules, adding more data connectors and ingesting data from more sources, and definitely getting pfSense logs into Sentinel. 
 
-Edit: Apparently the Windows Event logs don't get correctly ingested; I will update this when I fix the issue. Right now I have to manually make a data collection rule to use.
+Edit: Apparently the Windows Event logs don't get correctly ingested with the script; I will update this when I fix the issue. Right now I have to manually make a data collection rule to use.
 
