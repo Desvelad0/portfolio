@@ -45,7 +45,7 @@ provider "azurerm" {
 
  Apparently freezing the version makes it easier to deal with any possible errors in newer versions; if one version is known to work, sticking to that might be useful in case a newer version breaks things.
 
-Running Terraform inside VSCodium, I can handily run `terraform fmt` to properly format the file I'm currently working on, assuming I have opened the working directory where that file is located inside the editor.
+Running Terraform inside VSCodium, I can handily run `terraform fmt` from a terminal to properly format the file I'm currently working on, assuming I have opened the working directory where that file is located inside the editor.
 
 I can add a `resource` to make things:
 
@@ -209,7 +209,7 @@ az resource delete --ids "/subscriptions/subid/resourceGroups/sentinel-demo/prov
 
 https://github.com/Desvelad0/scripts/blob/main/azure/sentineldemo.tf
 
-The only thing left to do manually with this script is to enroll my Windows PC with Azure Arc and Azure Monitor Agent.
+The only thing left to do manually with this script is to enroll my Windows PC with Azure Arc and Azure Monitor Agent, and after that add the computer into the data collection rule made by the script.
 
 ## Wrapping up
 
