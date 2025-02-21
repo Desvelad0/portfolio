@@ -209,7 +209,7 @@ az resource delete --ids "/subscriptions/subid/resourceGroups/sentinel-demo/prov
 
 https://github.com/Desvelad0/scripts/blob/main/azure/sentineldemo.tf
 
-The only thing left to do manually with this script is to enroll my Windows PC with Azure Arc and Azure Monitor Agent, and after that add the computer into the data collection rule made by the script.
+The only thing left to do manually with this script is to enroll my Windows PC with Azure Arc and Azure Monitor Agent, and after that add the computer into the data collection rule (in Configuration > Resources) made by the script.
 
 ## Wrapping up
 
