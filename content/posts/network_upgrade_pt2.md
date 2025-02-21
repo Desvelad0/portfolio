@@ -1,6 +1,7 @@
 ---
 title: "Network upgrade part 2: Unifi switch in non Unifi environment"
 tags: [networking,unifi,esxi]
+slug: "network_upgrade_pt2"
 date: 2025-02-12T14:30:52+02:00
 draft: false
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Returning to Arch Linux"
+slug: "returning_to_arch_linux"
 tags: [arch,linux]
 date: 2024-05-31T03:33:58+03:00
 draft: false

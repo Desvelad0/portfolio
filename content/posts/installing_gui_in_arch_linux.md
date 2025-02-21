@@ -1,5 +1,7 @@
 ---
-title: "Installing GUI on Arch Linux"
+title: "Installing GUI in Arch Linux"
+slug: "installing_gui_in_arch_linux"
+tags: [arch,linux]
 date: 2024-08-01T14:44:09+03:00
 draft: false
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Network upgrade part 1: TrueNAS SCALE"
+slug: "network_upgrade"
 tags: [networking,truenas,unifi,esxi]
 date: 2024-11-19T20:56:06+02:00
 draft: false
