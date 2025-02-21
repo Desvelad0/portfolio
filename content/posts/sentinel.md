@@ -166,7 +166,7 @@ This makes some neat data for local log in errors to my computer. Based on this 
 
 ![automation](/azure/automation.png)
 
-I wanted to make the alert email all neat and beautiful, but turns out the provider where I hosted this email address (for free) doesn't really like it when you send a lot of emails in rapid succession. I was going to set up SendGrid for this purpose since they apparently have a decent free tier, but at the time of writing, their sign up page was down. Oh well, something to continue with later.
+I wanted to make the alert email all neat and beautiful, but turns out the provider where I hosted this email address (for free) doesn't really like it when you send a lot of emails in rapid succession, and soft-banned my account from sending more emails for an undetermined amount of time. I was going to set up SendGrid for this purpose since they apparently have a decent free tier, but at the time of writing, their sign up page was down. Oh well, something to continue with later.
 
 ## Automate it all
 
