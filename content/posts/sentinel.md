@@ -1,6 +1,6 @@
 ---
 title: "Getting started with Sentinel and automating with Terraform"
-tags: [azure,terraform]
+tags: [azure,sentinel,terraform]
 date: 2025-02-18T21:58:32+02:00
 draft: false
 ---
