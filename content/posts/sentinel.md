@@ -17,7 +17,7 @@ I also need to install the Azure CLI tools which after a quick [googlin](https:/
 
 ``winget install --exact --id Microsoft.AzureCLI`` 
 
-Then (after opening and re-opening my PowerShell window) I need to login to my Azure account by running `az login` and apparently need to append `--tenant <tenantid>` to get to the proper login screen for my tenant and have access to that tenant's resources:
+Then (after closing and re-opening my PowerShell window) I need to login to my Azure account by running `az login` and apparently need to append `--tenant <tenantid>` to get to the proper login screen for my tenant and have access to that tenant's resources:
 
 ![loginscreen.png](/azure/loginscreen.png)
 
