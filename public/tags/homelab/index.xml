@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homelab on Portfolio</title>
     <link>http://localhost:1313/tags/homelab/</link>
     <description>Recent content in Homelab on Portfolio</description>
-    <generator>Hugo -- 0.125.4</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 21 May 2024 16:33:27 +0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
@@ -13,15 +13,14 @@
       <link>http://localhost:1313/posts/wazuh_inuse/</link>
       <pubDate>Tue, 21 May 2024 16:33:27 +0300</pubDate>
       <guid>http://localhost:1313/posts/wazuh_inuse/</guid>
-      <description>Since the last post got a bit long, I thought I would make this one just to show how Wazuh works in practise, hopefully in a more digestible manner.
-Drilling into vulnerabilities of an agent I have slowly been rolling out Wazuh to my servers, starting with an important Ubuntu Server, which is my only Linux server that has a GUI for website access locally on the machine. As it is a still essentially a server, despite it having a desktop installation, there are many things that come pre-installed that I don&amp;rsquo;t personally need, such as bluetooth drivers.</description>
+      <description>&lt;p&gt;Since the last post got a bit long, I thought I would make this one just to show how Wazuh works in practise, hopefully in a more digestible manner.&lt;/p&gt;&#xA;&lt;h2 id=&#34;drilling-into-vulnerabilities-of-an-agent&#34;&gt;&lt;strong&gt;Drilling into vulnerabilities of an agent&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;I have slowly been rolling out Wazuh to my servers, starting with an important Ubuntu Server, which is my only Linux server that has a GUI for website access locally on the machine. As it is a still essentially a server, despite it having a desktop installation, there are many things that come pre-installed that I don&amp;rsquo;t personally need, such as bluetooth drivers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Installing and configuring Wazuh</title>
-      <link>http://localhost:1313/posts/wazuh_install/</link>
+      <link>http://localhost:1313/posts/installing_wazuh/</link>
       <pubDate>Thu, 16 May 2024 23:33:00 +0300</pubDate>
-      <guid>http://localhost:1313/posts/wazuh_install/</guid>
-      <description>Wazuh is a really cool free, open source tool that unifies XDR and SIEM capabilities into one neat package. It has features such as vulnerability detection, file integrity monitoring and log data analysis, threat hunting, posture management and a bunch more. I have previously used Wazuh in a professional capacity, and have been meaning to install it into my own environment, which is what this post is about. I will be following the version 4.</description>
+      <guid>http://localhost:1313/posts/installing_wazuh/</guid>
+      <description>&lt;p&gt;Wazuh is a really cool free, open source tool that unifies XDR and SIEM capabilities into one neat package. It has features such as vulnerability detection, file integrity monitoring and log data analysis, threat hunting, posture management and a bunch more. I have previously used Wazuh in a professional capacity, and have been meaning to install it into my own environment, which is what this post is about. I will be following the version 4.7 documentation for the service. At the end of the post you can see a rough diagram of the finished setup.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -3,22 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/tags/azure/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sentinel/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sentinel/</loc>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/setting_up_sentinel/</loc>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/terraform/</loc>
-    <lastmod>2025-02-18T21:58:32+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/esxi/</loc>
     <lastmod>2025-02-12T14:30:52+02:00</lastmod>
@@ -38,17 +41,17 @@
     <loc>http://localhost:1313/tags/truenas/</loc>
     <lastmod>2024-11-19T20:56:06+02:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/arch/</loc>
+    <lastmod>2024-08-01T14:44:09+03:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/installing_gui_in_arch_linux/</loc>
+    <lastmod>2024-08-01T14:44:09+03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/linux/</loc>
     <lastmod>2024-08-01T14:44:09+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2024-05-31T12:18:51+03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/arch/</loc>
-    <lastmod>2024-05-31T03:33:58+03:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
-    <lastmod>2024-05-31T03:33:58+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/returning_to_arch_linux/</loc>
     <lastmod>2024-05-31T03:33:58+03:00</lastmod>
@@ -62,7 +65,7 @@
     <loc>http://localhost:1313/tags/wazuh/</loc>
     <lastmod>2024-05-21T16:33:27+03:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/wazuh_install/</loc>
+    <loc>http://localhost:1313/posts/installing_wazuh/</loc>
     <lastmod>2024-05-16T23:33:00+03:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>

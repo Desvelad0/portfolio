@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Azure on Portfolio</title>
     <link>http://localhost:1313/tags/azure/</link>
     <description>Recent content in Azure on Portfolio</description>
-    <generator>Hugo -- 0.125.4</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Feb 2025 21:58:32 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 00:00:32 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/azure/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Getting started with Sentinel and Terraform</title>
-      <link>http://localhost:1313/posts/sentinel/</link>
-      <pubDate>Tue, 18 Feb 2025 21:58:32 +0200</pubDate>
-      <guid>http://localhost:1313/posts/sentinel/</guid>
-      <description>This past weekend I went to Disobey, which if you are reading this and have not gone, I implore you to do so next year, it was a great experience for anyone interested in cyber security and any aspiring sticker collector.
-At the event, I spoke with several people regarding employment in the field, and many mentioned how important it is to be comfortable using Microsoft Sentinel, as it is often used as the collection point for any logs an environment produces and configured to generate alerts depending on the needs of a company.</description>
+      <title>Setting up Sentinel and automating with Terraform</title>
+      <link>http://localhost:1313/posts/setting_up_sentinel/</link>
+      <pubDate>Fri, 21 Feb 2025 00:00:32 +0200</pubDate>
+      <guid>http://localhost:1313/posts/setting_up_sentinel/</guid>
+      <description>&lt;p&gt;This past weekend I went to Disobey, which if you are reading this and have not gone, I implore you to do so next year, it was a great experience for anyone interested in cyber security and any aspiring sticker collector.&lt;/p&gt;&#xA;&lt;p&gt;At the event, I spoke with several people regarding employment in the field, and many mentioned how important it is to be comfortable using Microsoft Sentinel, as it is often used as the collection point for any logs an environment produces and configured to generate alerts depending on the needs of a company.  I have previously used Sentinel to monitor and act on security alerts, but thought it would be a good exercise to set up the tool from scratch in my own environment, and while doing so, learn more about how to use Terraform for better cloud automation.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
