@@ -219,4 +219,17 @@ Continuing with the upgrade:
 
 This time when I'm prompted about keeping or updating the .yml file, the documentation tells me to replace the existing one with the updated one (package maintainer's version.) 
 
-Now I have to reapply "any configuration changes" to the .yml file, having to pay special attention to values of `server.ssl.key` and `server.ssl.certificate` , and to make sure they match the files located in `/etc/wazuh-dashboard/certs/`. Wonder why I had to replace it then...
+Now I have to reapply "any configuration changes" to the .yml file, having to pay special attention to values of `server.ssl.key` and `server.ssl.certificate` , and to make sure they match the files located in `/etc/wazuh-dashboard/certs/`. Wonder why I had to replace it then... Only things that were missing were the correct IP addresses for me. Another thing to check for was to make sure the following line is in the file, which it is for me:
+
+`uiSettings.overrides.defaultRoute: /app/wz-home`
+
+Then the dashboard needs to be restarted:
+
+```
+systemctl daemon-reload
+systemctl enable wazuh-dashboard
+systemctl start wazuh-dashboard
+```
+
+
+
