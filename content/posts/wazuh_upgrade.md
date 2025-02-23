@@ -295,7 +295,9 @@ So it doesn't completely work still.
 
 ![vulndetection](/wazuh/vulndetection.png)
 
-Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in `/var/ossec/etc/internal_options.conf`. I love this software and its documentation, but this is just confusing. I went ahead and changed the 1 into 0 in the `internal_options.conf`, restarted the Wazuh manager and still had the same issue. The [FAQ](https://documentation.wazuh.com/4.11/user-manual/capabilities/vulnerability-detection/FAQ.html#step-2-verify-the-connection) leads me to suspect that the issue is with the certificate, as the curl command suggested for troubleshooting here fails for me. Looking at `/var/ossec/etc/ossec.conf`, a certificate referenced exists nowhere on the system which is very interesting indeed (confirmed with `find / -name`).
+Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in `/var/ossec/etc/internal_options.conf`. I love this software and its documentation, but this is just confusing. 
+
+I went ahead and changed the 1 into 0 in the `internal_options.conf`, restarted the Wazuh manager and still had the same issue. The [FAQ](https://documentation.wazuh.com/4.11/user-manual/capabilities/vulnerability-detection/FAQ.html#step-2-verify-the-connection) leads me to suspect that the issue is with the certificate, as the curl command suggested for troubleshooting here fails for me. Looking at `/var/ossec/etc/ossec.conf`, a certificate referenced exists nowhere on the system which is very interesting indeed (confirmed with `find / -name`).
 
 ## YES!
 
