@@ -1,12 +1,12 @@
 ---
 title: "Upgrading Wazuh components"
 slug: "upgrading_wazuh_components"
-tags: [azure,sentinel,terraform]
+tags: [wazuh,linux,ubuntu]
 date: 2025-02-23T00:50:00+02:00
-draft: true
+draft: false
 ---
 
-I thought upgrading Wazuh along with its several components would be as simple as running ``sudo apt update && sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I'm documenting the steps required to update the setup in a [proper manner](https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html) to the tunes of a lockdown set from Disciple records; if you like EDM, I recommend [giving it a listen](https://www.youtube.com/live/u4uddXsaXfg?si=CyP3jEbFJPxtZYUA&t=1136) (timestamp intended: if you don't like the first set's harder style, DalCo is great.)
+I thought upgrading Wazuh along with its several components would be as simple as running ``sudo apt update && sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I'm documenting the steps required to update the setup in a [proper manner](https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html) to the tunes of Virtual Riot, one of the most talented EDM artists out there.
 
 First I obviously will run `apt update`  on both the Wazuh Indexer and Wazuh Server servers, as I chose to install the components in Ubuntu. I then apparently need to install the ``gnupg apt-transport-https`` before continuing, and install the Wazuh GPG key with:
 
@@ -52,7 +52,7 @@ The username and password have to indeed be in the format ``admin:password`` wit
 Next up:
 
 ```
-curl -X POST "https://<WAZUH_INDEXER_IP_ADDRESS>:9200/_flush" -u <USERNAME>:<PASSWORD> -k
+# curl -X POST "https://<WAZUH_INDEXER_IP_ADDRESS>:9200/_flush" -u <USERNAME>:<PASSWORD> -k
 ```
 
 Output:
@@ -67,9 +67,9 @@ In my sort of setup where I have just one Wazuh manager node, I now need to run 
 
 These following steps need to be ran on every Wazuh indexer node, which for me is just one; I think I'll have to install at least one more of these to have some high-availability and more interesting times when updating (not to mention constant connectivity between agents and the indexer):
 
-``systemctl stop wazuh-indexer`` 
+``# systemctl stop wazuh-indexer`` 
 
-``apt-get install wazuh-indexer`` (running this asks you whether you want to keep your own configuration file or install a default package maintainer one for multiple things; I don't see any reason not to keep my own config files.)
+``# apt-get install wazuh-indexer`` (running this asks you whether you want to keep your own configuration file or install a default package maintainer one for multiple things; I don't see any reason not to keep my own config files.)
 
 Next:
 
@@ -287,10 +287,6 @@ That's it. Yes they state it, however they never explicitly said that those comi
 
 Getting rid of all the OS specific lines and restarting the dashboard now makes the API connection show up as online, and after manually pressing "check for updates", the server is able to look for updates. The upgrade is done!
 
-The UI got a complete overhaul from the time that I installed this last, wow.
-
-![newdashboard](/wazuh/newdashboard.png)
-
 ... Yet I see this:
 
 ![vulnprob](/wazuh/vulnproblem.png)
@@ -299,4 +295,23 @@ So it doesn't completely work still.
 
 ![vulndetection](/wazuh/vulndetection.png)
 
-Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in `/var/ossec/etc/internal_options.conf`. I love this software and its documentation, but this is just confusing.
+Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in `/var/ossec/etc/internal_options.conf`. I love this software and its documentation, but this is just confusing. I went ahead and changed the 1 into 0 in the `internal_options.conf`, restarted the Wazuh manager and still had the same issue. The [FAQ](https://documentation.wazuh.com/4.11/user-manual/capabilities/vulnerability-detection/FAQ.html#step-2-verify-the-connection) leads me to suspect that the issue is with the certificate, as the curl command suggested for troubleshooting here fails for me. Looking at `/var/ossec/etc/ossec.conf`, a certificate referenced exists nowhere on the system which is very interesting indeed (confirmed with `find / -name`).
+
+## YES!
+
+The issue was indeed with the certificate + key naming in `ossec.conf`. I have no idea whether the certificate and key somehow changed names, or if the `ossec.conf` changed with the update. Whichever it was, it now works, and I can see all the events and vulnerabilities of all my agents in a very slick improved GUI. 
+
+Finally, upgrading agents, if lucky, is as easy as running this on the server containing the ``wazuh-manager``: 
+
+```
+# /var/ossec/bin/agent_upgrade -a 010
+
+Upgrading...
+
+Upgraded agents:
+        Agent 010 upgraded: Wazuh v4.7.4 -> Wazuh v4.11.0
+```
+
+That is all.
+
+As I expected, the upgrade process was not as straightforward as one might imagine, but having done this sort of a thing for many years now, it was certainly doable if a bit irritating at times. I'll certainly be looking more into the new interesting documentation on Wazuh such as the aforementioned LLM integrations for alert enrichment, sounds very interesting indeed. For now however, thank you for reading, and stay tuned for more content soonTM!
