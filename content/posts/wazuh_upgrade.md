@@ -2,7 +2,7 @@
 title: "Upgrading Wazuh components"
 slug: "upgrading_wazuh_components"
 tags: [wazuh,linux,ubuntu]
-date: 2025-02-23T00:50:00+02:00
+date: 2025-02-23T22:03:00+02:00
 draft: false
 ---
 
