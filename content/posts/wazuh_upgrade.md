@@ -6,7 +6,7 @@ date: 2025-02-23T00:50:00+02:00
 draft: false
 ---
 
-I thought upgrading Wazuh along with its several components would be as simple as running ``sudo apt update && sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I'm documenting the steps required to update the setup in a [proper manner](https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html) to the tunes of Virtual Riot, one of the most talented EDM artists out there.
+I thought upgrading Wazuh along with its several components would be as simple as running `sudo apt update && sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I'm documenting the steps required to update the setup in a [proper manner](https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html) to the tunes of Virtual Riot, one of the most talented EDM artists out there.
 
 First I obviously will run `apt update`  on both the Wazuh Indexer and Wazuh Server servers, as I chose to install the components in Ubuntu. I then apparently need to install the ``gnupg apt-transport-https`` before continuing, and install the Wazuh GPG key with:
 

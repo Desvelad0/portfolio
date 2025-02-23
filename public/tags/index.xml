@@ -9,23 +9,44 @@
     <lastBuildDate>Sun, 23 Feb 2025 00:50:00 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>http://localhost:1313/tags/ubuntu/</link>
+      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <guid>http://localhost:1313/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wazuh</title>
+      <link>http://localhost:1313/tags/wazuh/</link>
+      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <guid>http://localhost:1313/tags/wazuh/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Azure</title>
       <link>http://localhost:1313/tags/azure/</link>
-      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <pubDate>Fri, 21 Feb 2025 00:00:32 +0200</pubDate>
       <guid>http://localhost:1313/tags/azure/</guid>
       <description></description>
     </item>
     <item>
       <title>Sentinel</title>
       <link>http://localhost:1313/tags/sentinel/</link>
-      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <pubDate>Fri, 21 Feb 2025 00:00:32 +0200</pubDate>
       <guid>http://localhost:1313/tags/sentinel/</guid>
       <description></description>
     </item>
     <item>
       <title>Terraform</title>
       <link>http://localhost:1313/tags/terraform/</link>
-      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
+      <pubDate>Fri, 21 Feb 2025 00:00:32 +0200</pubDate>
       <guid>http://localhost:1313/tags/terraform/</guid>
       <description></description>
     </item>
@@ -65,24 +86,10 @@
       <description></description>
     </item>
     <item>
-      <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
-      <pubDate>Thu, 01 Aug 2024 14:44:09 +0300</pubDate>
-      <guid>http://localhost:1313/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Homelab</title>
       <link>http://localhost:1313/tags/homelab/</link>
       <pubDate>Tue, 21 May 2024 16:33:27 +0300</pubDate>
       <guid>http://localhost:1313/tags/homelab/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Wazuh</title>
-      <link>http://localhost:1313/tags/wazuh/</link>
-      <pubDate>Tue, 21 May 2024 16:33:27 +0300</pubDate>
-      <guid>http://localhost:1313/tags/wazuh/</guid>
       <description></description>
     </item>
   </channel>
