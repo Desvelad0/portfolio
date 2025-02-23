@@ -6,15 +6,8 @@
     <description>Recent content on Portfolio</description>
     <generator>Hugo -- 0.144.2</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Feb 2025 00:50:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 00:00:32 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Upgrading Wazuh components</title>
-      <link>http://localhost:1313/posts/upgrading_wazuh_components/</link>
-      <pubDate>Sun, 23 Feb 2025 00:50:00 +0200</pubDate>
-      <guid>http://localhost:1313/posts/upgrading_wazuh_components/</guid>
-      <description>&lt;p&gt;I thought upgrading Wazuh along with its several components would be as simple as running ``sudo apt update &amp;amp;&amp;amp; sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I&amp;rsquo;m documenting the steps required to update the setup in a &lt;a href=&#34;https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html&#34;&gt;proper manner&lt;/a&gt; to the tunes of a lockdown set from Disciple records; if you like EDM, I recommend &lt;a href=&#34;https://www.youtube.com/live/u4uddXsaXfg?si=CyP3jEbFJPxtZYUA&amp;amp;t=1136&#34;&gt;giving it a listen&lt;/a&gt; (timestamp intended: if you don&amp;rsquo;t like the first set&amp;rsquo;s harder style, DalCo is great.)&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Setting up Sentinel and automating with Terraform</title>
       <link>http://localhost:1313/posts/setting_up_sentinel/</link>

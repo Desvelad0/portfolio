@@ -207,16 +207,16 @@ W: Target Translations (main/i18n/Translation-en) is configured multiple times i
 </code></pre><p>Now I need to store Wazuh indexer credentials to a Wazuh manager keystore:</p>
 <pre tabindex="0"><code># echo &#39;&lt;INDEXER_USERNAME&gt;&#39; | /var/ossec/bin/wazuh-keystore -f indexer -k username
 # echo &#39;&lt;INDEXER_PASSWORD&gt;&#39; | /var/ossec/bin/wazuh-keystore -f indexer -k password
-</code></pre><h2 id="configuring-filebeat">Configuring Filebeat<a hidden class="anchor" aria-hidden="true" href="#configuring-filebeat">#</a></h2>
+</code></pre><h2 id="upgrading-filebeat">Upgrading Filebeat<a hidden class="anchor" aria-hidden="true" href="#upgrading-filebeat">#</a></h2>
 <p>Now I have to update the Wazuh Filebeat module and alerts template to work with the latest Wazuh indexer version:</p>
 <pre tabindex="0"><code># curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | sudo tar -xvz -C /usr/share/filebeat/module
-</code></pre><pre tabindex="0"><code>#curl -so /etc/filebeat/wazuh-template.json https://raw.githubusercontent.com/wazuh/wazuh/v4.11.0/extensions/elasticsearch/7.x/wazuh-template.json
+</code></pre><pre tabindex="0"><code># curl -so /etc/filebeat/wazuh-template.json https://raw.githubusercontent.com/wazuh/wazuh/v4.11.0/extensions/elasticsearch/7.x/wazuh-template.json
 chmod go+r /etc/filebeat/wazuh-template.json
-</code></pre><pre tabindex="0"><code>systemctl daemon-reload
-systemctl enable filebeat
-systemctl start filebeat
-</code></pre><pre tabindex="0"><code>filebeat setup --pipelines
-filebeat setup --index-management -E output.logstash.enabled=false
+</code></pre><pre tabindex="0"><code># systemctl daemon-reload
+# systemctl enable filebeat
+# systemctl start filebeat
+</code></pre><pre tabindex="0"><code># filebeat setup --pipelines
+# filebeat setup --index-management -E output.logstash.enabled=false
 </code></pre><p>That is it for Filebeat for me since I&rsquo;m coming from version 4.7.x.</p>
 <h2 id="upgrading-wazuh-dashboard">Upgrading Wazuh dashboard<a hidden class="anchor" aria-hidden="true" href="#upgrading-wazuh-dashboard">#</a></h2>
 <p>I need to backup the old <code>opensearch_dashboards.yml</code> file:</p>
@@ -238,6 +238,61 @@ filebeat setup --index-management -E output.logstash.enabled=false
 <p>Still not enough:</p>
 <p><code># resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</code></p>
 <p>And there, disk extended.</p>
+<p>Continuing with the upgrade:</p>
+<p><code># apt-get install wazuh-dashboard</code></p>
+<p>This time when I&rsquo;m prompted about keeping or updating the .yml file, the documentation tells me to replace the existing one with the updated one (package maintainer&rsquo;s version.)</p>
+<p>Now I have to reapply &ldquo;any configuration changes&rdquo; to the .yml file, having to pay special attention to values of <code>server.ssl.key</code> and <code>server.ssl.certificate</code> , and to make sure they match the files located in <code>/etc/wazuh-dashboard/certs/</code>. Wonder why I had to replace it then&hellip; Only things that were missing were the correct IP addresses for me. Another thing to check for was to make sure the following line is in the file, which it is for me:</p>
+<p><code>uiSettings.overrides.defaultRoute: /app/wz-home</code></p>
+<p>Then we need to run the good ol&rsquo; systemctl stuff:</p>
+<pre tabindex="0"><code>systemctl daemon-reload
+systemctl enable wazuh-dashboard
+systemctl start wazuh-dashboard
+</code></pre><p>&hellip; And at this stage the Wazuh dashboard should be accessible at <code>https://&lt;DASHBOARD_IP_ADDRESS&gt;/app/wz-home</code> which it isn&rsquo;t for me:</p>
+<p><img loading="lazy" src="/wazuh/wazuhdashboard.png" alt="img"  />
+</p>
+<p>Doing <code>systemctl status wazuh-dashboard</code> shows me the following:</p>
+<pre tabindex="0"><code>Feb 23 15:49:21 reina opensearch-dashboards[633212]: {&#34;type&#34;:&#34;log&#34;,&#34;@timestamp&#34;:&#34;2025-02-23T15:49:21Z&#34;,&#34;tags&#34;:[&#34;error&#34;,&#34;opensearch&#34;,&#34;data&#34;],&#34;pid&#34;:633212,&#34;message&#34;:&#34;[ConnectionError]: connect ECONNREFUSED 127.0.0.1:9200&#34;}
+</code></pre><p>I looked again at the <code>/etc/wazuh-dashboard/opensearch_dashboards.yml</code> file, and noticed commented out lines for <code>opensearch.username</code> and <code>opensearch.password</code>; I populated the fields, restarted the service and now could once again login to the dashboard. I was already surprised at how easy this was to fix until I see this upon logging in:</p>
+<p><img loading="lazy" src="/wazuh/apiconnectiondown.png" alt="apiconnectionproblem"  />
+</p>
+<p>Of course it won&rsquo;t be easy!</p>
+<p>Thankfully there is a handy troubleshooting link there, which asks you to check the service status for <code>wazuh-manager</code>:</p>
+<pre tabindex="0"><code>Feb 22 23:58:32 reina env[616941]: 2025/02/22 23:58:32 wazuh-modulesd: WARNING: (1230): Invalid element in the configuration: &#39;provider&#39;.
+</code></pre><p>Looking at the <code>/var/ossec/etc/ossec.conf</code> file where I had to remove <code>&lt;vulnerability-detection</code> and replace it with a new one, I realise this is referring to what I was thinking about earlier; the OS specific vulnerabilities which in my version were listed one by one after the old <code>&lt;vulnerability-detection</code> block.</p>
+<p>Let&rsquo;s see if <a href="https://documentation.wazuh.com/current/user-manual/capabilities/vulnerability-detection/configuring-scans.html">https://documentation.wazuh.com/current/user-manual/capabilities/vulnerability-detection/configuring-scans.html</a> helps here. I suppose it is a bit of a jump from my older 4.7.x version to the newest version at the time of writing of 4.11. At least they made vulnerability detection an automatically enabled feature now, which I completely agree with being on by default.</p>
+<p>I can&rsquo;t find anything helpful from the above article, but did notice several new interesting links that I&rsquo;ll have to take a look at in later posts; &ldquo;<a href="https://documentation.wazuh.com/current/proof-of-concept-guide/leveraging-llms-for-alert-enrichment.html">Leveraging LLMs for alert enrichment</a>&rdquo; sure sounds interesting. I also notice that the upgrade guide doesn&rsquo;t mention anything about this particular error after an upgrade. Apparently the vulnerability detection changed quite a bit in the 4.8 version, and searching around I can see many people had this same issue I&rsquo;m facing right now.</p>
+<p>Well I ended up finding a Reddit post that linked to <a href="https://www.youtube.com/watch?app=desktop&amp;v=_RWWALAAddo">this YouTube video</a> about upgrading to 4.8.0; although they do technically say it in the documentation, they don&rsquo;t directly say that now all you need for the detection of vulnerabilities is the following:</p>
+<pre tabindex="0"><code>&lt;vulnerability-detection&gt;
+   &lt;enabled&gt;yes&lt;/enabled&gt;
+   &lt;index-status&gt;yes&lt;/index-status&gt;
+   &lt;feed-update-interval&gt;60m&lt;/feed-update-interval&gt;
+&lt;/vulnerability-detection&gt;
+
+&lt;indexer&gt;
+   &lt;enabled&gt;yes&lt;/enabled&gt;
+   &lt;hosts&gt;
+      &lt;host&gt;https://0.0.0.0:9200&lt;/host&gt;
+   &lt;/hosts&gt;
+   &lt;ssl&gt;
+      &lt;certificate_authorities&gt;
+         &lt;ca&gt;/etc/filebeat/certs/root-ca.pem&lt;/ca&gt;
+      &lt;/certificate_authorities&gt;
+      &lt;certificate&gt;/etc/filebeat/certs/filebeat.pem&lt;/certificate&gt;
+      &lt;key&gt;/etc/filebeat/certs/filebeat-key.pem&lt;/key&gt;
+   &lt;/ssl&gt;
+&lt;/indexer&gt;
+</code></pre><p>That&rsquo;s it. Yes they state it, however they never explicitly said that those coming from previous versions could just delete any mention of the various different OS vulnerability feeds, which is the reason I was having this error.</p>
+<p>Getting rid of all the OS specific lines and restarting the dashboard now makes the API connection show up as online, and after manually pressing &ldquo;check for updates&rdquo;, the server is able to look for updates. The upgrade is done!</p>
+<p>The UI got a complete overhaul from the time that I installed this last, wow.</p>
+<p><img loading="lazy" src="/wazuh/newdashboard.png" alt="newdashboard"  />
+</p>
+<p>&hellip; Yet I see this:</p>
+<p><img loading="lazy" src="/wazuh/vulnproblem.png" alt="vulnprob"  />
+</p>
+<p>So it doesn&rsquo;t completely work still.</p>
+<p><img loading="lazy" src="/wazuh/vulndetection.png" alt="vulndetection"  />
+</p>
+<p>Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in <code>/var/ossec/etc/internal_options.conf</code>. I love this software and its documentation, but this is just confusing.</p>
 
 
   </div>

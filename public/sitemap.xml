@@ -2,28 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/azure/</loc>
-    <lastmod>2025-02-23T00:50:00+02:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
     <lastmod>2025-02-23T00:50:00+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-02-23T00:50:00+02:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/azure/</loc>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/sentinel/</loc>
-    <lastmod>2025-02-23T00:50:00+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-02-23T00:50:00+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/terraform/</loc>
-    <lastmod>2025-02-23T00:50:00+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/upgrading_wazuh_components/</loc>
-    <lastmod>2025-02-23T00:50:00+02:00</lastmod>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/setting_up_sentinel/</loc>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-21T00:00:32+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/terraform/</loc>
     <lastmod>2025-02-21T00:00:32+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/esxi/</loc>

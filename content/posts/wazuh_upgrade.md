@@ -152,7 +152,7 @@ Now I need to store Wazuh indexer credentials to a Wazuh manager keystore:
 # echo '<INDEXER_PASSWORD>' | /var/ossec/bin/wazuh-keystore -f indexer -k password
 ```
 
-## Configuring Filebeat
+## Upgrading Filebeat
 
 Now I have to update the Wazuh Filebeat module and alerts template to work with the latest Wazuh indexer version:
 
@@ -223,7 +223,7 @@ Now I have to reapply "any configuration changes" to the .yml file, having to pa
 
 `uiSettings.overrides.defaultRoute: /app/wz-home`
 
-Then the dashboard needs to be restarted:
+Then we need to run the good ol' systemctl stuff:
 
 ```
 systemctl daemon-reload
@@ -231,5 +231,72 @@ systemctl enable wazuh-dashboard
 systemctl start wazuh-dashboard
 ```
 
+... And at this stage the Wazuh dashboard should be accessible at ``https://<DASHBOARD_IP_ADDRESS>/app/wz-home`` which it isn't for me:
 
+![img](/wazuh/wazuhdashboard.png)
 
+Doing `systemctl status wazuh-dashboard` shows me the following:
+
+```
+Feb 23 15:49:21 reina opensearch-dashboards[633212]: {"type":"log","@timestamp":"2025-02-23T15:49:21Z","tags":["error","opensearch","data"],"pid":633212,"message":"[ConnectionError]: connect ECONNREFUSED 127.0.0.1:9200"}
+```
+
+I looked again at the ``/etc/wazuh-dashboard/opensearch_dashboards.yml`` file, and noticed commented out lines for `opensearch.username` and `opensearch.password`; I populated the fields, restarted the service and now could once again login to the dashboard. I was already surprised at how easy this was to fix until I see this upon logging in:
+
+![apiconnectionproblem](/wazuh/apiconnectiondown.png)
+
+Of course it won't be easy!
+
+Thankfully there is a handy troubleshooting link there, which asks you to check the service status for `wazuh-manager`:
+
+```
+Feb 22 23:58:32 reina env[616941]: 2025/02/22 23:58:32 wazuh-modulesd: WARNING: (1230): Invalid element in the configuration: 'provider'.
+```
+
+Looking at the ``/var/ossec/etc/ossec.conf`` file where I had to remove ``<vulnerability-detection`` and replace it with a new one, I realise this is referring to what I was thinking about earlier; the OS specific vulnerabilities which in my version were listed one by one after the old ``<vulnerability-detection`` block.
+
+Let's see if https://documentation.wazuh.com/current/user-manual/capabilities/vulnerability-detection/configuring-scans.html helps here. I suppose it is a bit of a jump from my older 4.7.x version to the newest version at the time of writing of 4.11. At least they made vulnerability detection an automatically enabled feature now, which I completely agree with being on by default.
+
+I can't find anything helpful from the above article, but did notice several new interesting links that I'll have to take a look at in later posts; "[Leveraging LLMs for alert enrichment](https://documentation.wazuh.com/current/proof-of-concept-guide/leveraging-llms-for-alert-enrichment.html)" sure sounds interesting. I also notice that the upgrade guide doesn't mention anything about this particular error after an upgrade. Apparently the vulnerability detection changed quite a bit in the 4.8 version, and searching around I can see many people had this same issue I'm facing right now.
+
+Well I ended up finding a Reddit post that linked to [this YouTube video](https://www.youtube.com/watch?app=desktop&v=_RWWALAAddo) about upgrading to 4.8.0; although they do technically say it in the documentation, they don't directly say that now all you need for the detection of vulnerabilities is the following:
+
+```
+<vulnerability-detection>
+   <enabled>yes</enabled>
+   <index-status>yes</index-status>
+   <feed-update-interval>60m</feed-update-interval>
+</vulnerability-detection>
+
+<indexer>
+   <enabled>yes</enabled>
+   <hosts>
+      <host>https://0.0.0.0:9200</host>
+   </hosts>
+   <ssl>
+      <certificate_authorities>
+         <ca>/etc/filebeat/certs/root-ca.pem</ca>
+      </certificate_authorities>
+      <certificate>/etc/filebeat/certs/filebeat.pem</certificate>
+      <key>/etc/filebeat/certs/filebeat-key.pem</key>
+   </ssl>
+</indexer>
+```
+
+That's it. Yes they state it, however they never explicitly said that those coming from previous versions could just delete any mention of the various different OS vulnerability feeds, which is the reason I was having this error.
+
+Getting rid of all the OS specific lines and restarting the dashboard now makes the API connection show up as online, and after manually pressing "check for updates", the server is able to look for updates. The upgrade is done!
+
+The UI got a complete overhaul from the time that I installed this last, wow.
+
+![newdashboard](/wazuh/newdashboard.png)
+
+... Yet I see this:
+
+![vulnprob](/wazuh/vulnproblem.png)
+
+So it doesn't completely work still. 
+
+![vulndetection](/wazuh/vulndetection.png)
+
+Right. So on one hand it is enabled by default, but on the other hand you have to go enable the detection in `/var/ossec/etc/internal_options.conf`. I love this software and its documentation, but this is just confusing.
