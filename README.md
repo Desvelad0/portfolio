@@ -1,14 +1,4 @@
-# Portfolio
+Technical blog running at https://blog.nmrs.fi.
 
 
-
-Here you may find various different projects I have worked on.
-
-
-
-# Homelab projects
-
-| Project               | Progress? | Description                                                  |
-| --------------------- | --------- | ------------------------------------------------------------ |
-| 🛡️[Wazuh](linkherepls) | On-going  | Setting up Wazuh XDR/SIEM for my homelab, configuring it and learning about its usage |
-
+Note to self: run git submodule update --init --recursive when cloning the repo for the first time.
