@@ -3,7 +3,7 @@ title: "Upgrading Wazuh components"
 slug: "upgrading_wazuh_components"
 tags: [azure,sentinel,terraform]
 date: 2025-02-23T00:50:00+02:00
-draft: false
+draft: true
 ---
 
 I thought upgrading Wazuh along with its several components would be as simple as running ``sudo apt update && sudo apt upgrade -y`, but last time when I attempted this a few months ago, the setup stopped working, so I'm documenting the steps required to update the setup in a [proper manner](https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html) to the tunes of a lockdown set from Disciple records; if you like EDM, I recommend [giving it a listen](https://www.youtube.com/live/u4uddXsaXfg?si=CyP3jEbFJPxtZYUA&t=1136) (timestamp intended: if you don't like the first set's harder style, DalCo is great.)
