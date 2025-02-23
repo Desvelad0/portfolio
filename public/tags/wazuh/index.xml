@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Wazuh on Portfolio</title>
     <link>http://localhost:1313/tags/wazuh/</link>
     <description>Recent content in Wazuh on Portfolio</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.144.2</generator>
     <language>en</language>
     <lastBuildDate>Tue, 21 May 2024 16:33:27 +0300</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/wazuh/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/posts/wazuh_inuse/</link>
       <pubDate>Tue, 21 May 2024 16:33:27 +0300</pubDate>
       <guid>http://localhost:1313/posts/wazuh_inuse/</guid>
-      <description>&lt;p&gt;Since the last post got a bit long, I thought I would make this one just to show how Wazuh works in practise, hopefully in a more digestible manner.&lt;/p&gt;&#xA;&lt;h2 id=&#34;drilling-into-vulnerabilities-of-an-agent&#34;&gt;&lt;strong&gt;Drilling into vulnerabilities of an agent&lt;/strong&gt;&lt;/h2&gt;&#xA;&lt;p&gt;I have slowly been rolling out Wazuh to my servers, starting with an important Ubuntu Server, which is my only Linux server that has a GUI for website access locally on the machine. As it is a still essentially a server, despite it having a desktop installation, there are many things that come pre-installed that I don&amp;rsquo;t personally need, such as bluetooth drivers.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Since the last post got a bit long, I thought I would make this one just to show how Wazuh works in practise, hopefully in a more digestible manner.&lt;/p&gt;
+&lt;h2 id=&#34;drilling-into-vulnerabilities-of-an-agent&#34;&gt;&lt;strong&gt;Drilling into vulnerabilities of an agent&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;I have slowly been rolling out Wazuh to my servers, starting with an important Ubuntu Server, which is my only Linux server that has a GUI for website access locally on the machine. As it is a still essentially a server, despite it having a desktop installation, there are many things that come pre-installed that I don&amp;rsquo;t personally need, such as bluetooth drivers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Installing and configuring Wazuh</title>

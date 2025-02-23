@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Truenas on Portfolio</title>
     <link>http://localhost:1313/tags/truenas/</link>
     <description>Recent content in Truenas on Portfolio</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.144.2</generator>
     <language>en</language>
     <lastBuildDate>Tue, 19 Nov 2024 20:56:06 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/truenas/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,16 @@
       <link>http://localhost:1313/posts/network_upgrade/</link>
       <pubDate>Tue, 19 Nov 2024 20:56:06 +0200</pubDate>
       <guid>http://localhost:1313/posts/network_upgrade/</guid>
-      <description>&lt;p&gt;There&amp;rsquo;s been many changes in my internal network in the past few months. For several years I&amp;rsquo;ve wanted to build a NAS in order to start self-hosting more and more things and rely less on the &amp;ldquo;cloud&amp;rdquo;, and finally did so. I bought a setup as follows:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Case:&lt;/strong&gt; Fractal Design Define 7 (lots of space for HDDs)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Motherboard:&lt;/strong&gt; Asrock Z790 Pro RS/D4 (mostly because of the crazy amount of 8 sata ports, making it so I don&amp;rsquo;t have to buy any SATA expansion cards yet.)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CPU:&lt;/strong&gt; Intel Core i5-13400F (This one I chose mostly due to it having a nice amount of cores/threads for virtualization, 6 performance cores and 4 efficiency-cores)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;RAM:&lt;/strong&gt; Kingston FURY Beast DDR4 3200 MHz CL16 32 Gt (I thought 32 GB would be more than enough but turns out that if you want to run any VMs, more is probably good as ZFS enjoys RAM)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;PSU:&lt;/strong&gt; Asus Rog Strix 750W Gold Aura Edition 80+ Gold (This is really good due to it being really quiet and power efficient according to Cybenetics test; it&amp;rsquo;s also made by Seasonic which has been a very reputable PSU manufacturer for quite a while)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;HDD:&lt;/strong&gt; 6 x 16 TB X18 Exos drives (might as well have enough space to have a big enough buffer for the foreseeable future)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I installed the latest stable version of TrueNAS SCALE and the installation was very simple; you just have to decide what drive to install the OS to, choose a root password and choose whether or not you want to have a swap partition. I chose to go with SCALE due to it being the newer version of TrueNAS which is built on Linux, whereas the older version, CORE is based on BSD. There&amp;rsquo;s several features such as virtualization which can only be achieved on SCALE, so that, it being updated more frequently and me being more comfortable on Linux, I chose SCALE. Both utilize the OpenZFS file system which will protect my data with features such as self-healing features, incremental snapshots, software-defined raid and even replication to off-site targets. Awesome.&lt;/p&gt;</description>
+      <description>&lt;p&gt;There&amp;rsquo;s been many changes in my internal network in the past few months. For several years I&amp;rsquo;ve wanted to build a NAS in order to start self-hosting more and more things and rely less on the &amp;ldquo;cloud&amp;rdquo;, and finally did so. I bought a setup as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Case:&lt;/strong&gt; Fractal Design Define 7 (lots of space for HDDs)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Motherboard:&lt;/strong&gt; Asrock Z790 Pro RS/D4 (mostly because of the crazy amount of 8 sata ports, making it so I don&amp;rsquo;t have to buy any SATA expansion cards yet.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU:&lt;/strong&gt; Intel Core i5-13400F (This one I chose mostly due to it having a nice amount of cores/threads for virtualization, 6 performance cores and 4 efficiency-cores)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAM:&lt;/strong&gt; Kingston FURY Beast DDR4 3200 MHz CL16 32 Gt (I thought 32 GB would be more than enough but turns out that if you want to run any VMs, more is probably good as ZFS enjoys RAM)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PSU:&lt;/strong&gt; Asus Rog Strix 750W Gold Aura Edition 80+ Gold (This is really good due to it being really quiet and power efficient according to Cybenetics test; it&amp;rsquo;s also made by Seasonic which has been a very reputable PSU manufacturer for quite a while)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HDD:&lt;/strong&gt; 6 x 16 TB X18 Exos drives (might as well have enough space to have a big enough buffer for the foreseeable future)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I installed the latest stable version of TrueNAS SCALE and the installation was very simple; you just have to decide what drive to install the OS to, choose a root password and choose whether or not you want to have a swap partition. I chose to go with SCALE due to it being the newer version of TrueNAS which is built on Linux, whereas the older version, CORE is based on BSD. There&amp;rsquo;s several features such as virtualization which can only be achieved on SCALE, so that, it being updated more frequently and me being more comfortable on Linux, I chose SCALE. Both utilize the OpenZFS file system which will protect my data with features such as self-healing features, incremental snapshots, software-defined raid and even replication to off-site targets. Awesome.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
